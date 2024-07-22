@@ -1,16 +1,20 @@
 const express = require('express');
 const dotenv = require('dotenv');
-// route files
-const bootcamps = require('./routes/bootcamps')
-// Load env vars
+const bootcampRouter = require('./routes/bootcamps');
+
 dotenv.config({ path: './config/config.env' });
 
 const app = express();
 
-// Mount routers
-app.use('/api/v1/bootcamps', bootcamps);
+app.use(express.json()); // Ensure JSON parsing is enabled
 
+app.use('/api/v1/bootcamps', bootcampRouter);
 
+// Basic error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
+});
 
 const PORT = process.env.PORT || 5000;
 
