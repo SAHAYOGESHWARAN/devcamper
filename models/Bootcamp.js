@@ -1,38 +1,37 @@
 const mongoose = require('mongoose');
 
-const bootcamp = new mongoose.Schema({
+const BootcampSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please add a name'],
         unique: true,
         trim: true,
-        maxlength:[50,'name can not be more than 50 characters']
-    }
+        maxlength: [50, 'Name can not be more than 50 characters']
+    },
     slug: String,
-
-    description:{
+    description: {
         type: String,
         required: [true, 'Please add a description'],
-        maxlength:[500,'Description can not be more than 500 characters']
-
+        maxlength: [500, 'Description can not be more than 500 characters']
     },
-    website:{
+    website: {
         type: String,
-        match:[
-            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
-        'please use a valid URL with http or HTTPS'
-            ]]
+        match: [
+            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+            'Please use a valid URL with HTTP or HTTPS'
+        ]
     },
-email:{
-    type: String,
-    match:[
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        'please use a valid email'
-    ]
-},
-address:{
-    type: String,
-    required:[true,'please add an address']
-},
-
+    email: {
+        type: String,
+        match: [
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            'Please use a valid email'
+        ]
+    },
+    address: {
+        type: String,
+        required: [true, 'Please add an address']
+    }
 });
+
+module.exports = mongoose.model('Bootcamp', BootcampSchema);
