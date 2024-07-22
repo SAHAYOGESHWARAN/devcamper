@@ -1,10 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bootcampRouter = require('./routes/bootcamps');
+const morgan =require('morgan');
 
 dotenv.config({ path: './config/config.env' });
 
 const app = express();
+
+//app.use(logger); // Use the external logger middleware
+// dev logging middleware
+if(process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
 
 app.use(express.json()); // Ensure JSON parsing is enabled
 
