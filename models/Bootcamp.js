@@ -19,9 +19,20 @@ const bootcamp = new mongoose.Schema({
     website:{
         type: String,
         match:[
-            /^((https?:\/\/)?(www\.)?)/,
-        ]
+            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
+        'please use a valid URL with http or HTTPS'
+            ]]
     },
-
+email:{
+    type: String,
+    match:[
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        'please use a valid email'
+    ]
+},
+address:{
+    type: String,
+    required:[true,'please add an address']
+},
 
 });
