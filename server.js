@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const bootcampRouter = require('./routes/bootcamps');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+const { setDriver } = require('mongoose');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -31,4 +32,12 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+});
+
+//handle unhandled promise rejections
+
+process.on('unhandleRejection',(err,promise)=>{
+    console.log('Errror: ${err.message}');
+    //close server & exit process
+  server.close(() => process.exit(1));   
 });
