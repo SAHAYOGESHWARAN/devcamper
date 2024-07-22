@@ -1,16 +1,19 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bootcampRouter = require('./routes/bootcamps');
-const morgan =require('morgan');
+const morgan = require('morgan');
 const connectDB = require('./config/db');
-dotenv.config({ path: '../config/config.env' });
 
+// Load env vars
+dotenv.config({ path: './config/config.env' });
+
+// Connect to database
 connectDB();
+
 const app = express();
 
-//app.use(logger); // Use the external logger middleware
-// dev logging middleware
-if(process.env.NODE_ENV === 'development') {
+// Dev logging middleware
+if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
