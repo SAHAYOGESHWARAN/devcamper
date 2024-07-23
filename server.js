@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bootcampRouter = require('./routes/bootcamp');
+const errorHandler = require('./middleware/error');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 require('colors'); // Make sure you have the colors package installed
@@ -15,6 +16,7 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+app.use(errorHandler);
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
