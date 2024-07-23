@@ -34,8 +34,10 @@ exports.getBootcamp = async (req, res, next) => {
 // @access  Private
 exports.createBootcamp = async (req, res, next) => {
     try {
-        const bootcamp = await Bootcamp.create(req.body);
-        res.status(201).json({ success: true, data: bootcamp });
+        console.log("create function from controller")
+       
+       // const bootcamp = await Bootcamp.create(req.body);
+        //res.status(201).json({ success: true, data: bootcamp });
     } catch (error) {
         res.status(400).json({ success: false, error: error.message });
     }

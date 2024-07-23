@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const bootcampRouter = require('./routes/bootcamps');
+const bootcampRouter = require('./routes/bootcamp'); // Corrected variable name
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 require('colors'); // Make sure you have the colors package installed
@@ -13,7 +13,6 @@ connectDB();
 
 const app = express();
 
-
 // Body parser
 app.use(express.json());
 
@@ -22,8 +21,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-app.use(express.json()); // Ensure JSON parsing is enabled
-
+// Mount routers
 app.use('/api/v1/bootcamps', bootcampRouter);
 
 // Basic error handling middleware
