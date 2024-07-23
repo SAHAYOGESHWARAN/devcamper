@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const bootcampRouter = require('./routes/bootcamp'); // Corrected variable name
+const bootcampRouter = require('./routes/bootcamp');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 require('colors'); // Make sure you have the colors package installed

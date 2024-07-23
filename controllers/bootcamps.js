@@ -8,7 +8,7 @@ exports.getBootcamps = async (req, res, next) => {
         const bootcamps = await Bootcamp.find();
         res.status(200).json({ success: true, count: bootcamps.length, data: bootcamps });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        next(error);  // Pass the error to the next middleware
     }
 };
 
@@ -25,7 +25,7 @@ exports.getBootcamp = async (req, res, next) => {
 
         res.status(200).json({ success: true, data: bootcamp });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        next(error);  // Pass the error to the next middleware
     }
 };
 
@@ -34,12 +34,10 @@ exports.getBootcamp = async (req, res, next) => {
 // @access  Private
 exports.createBootcamp = async (req, res, next) => {
     try {
-        console.log("create function from controller")
-       
-       // const bootcamp = await Bootcamp.create(req.body);
-        //res.status(201).json({ success: true, data: bootcamp });
+        const bootcamp = await Bootcamp.create(req.body);
+        res.status(201).json({ success: true, data: bootcamp });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        next(error);  // Pass the error to the next middleware
     }
 };
 
@@ -59,7 +57,7 @@ exports.updateBootcamp = async (req, res, next) => {
 
         res.status(200).json({ success: true, data: bootcamp });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        next(error);  // Pass the error to the next middleware
     }
 };
 
@@ -76,6 +74,6 @@ exports.deleteBootcamp = async (req, res, next) => {
 
         res.status(200).json({ success: true, data: {} });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        next(error);  // Pass the error to the next middleware
     }
 };
