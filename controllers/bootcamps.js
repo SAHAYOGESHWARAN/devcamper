@@ -14,8 +14,11 @@ exports.getBootcamps =(req, res, next) => {
 //@route  GET/api/v1/bootcamps/:id
 //@access pubilc
 exports.getBootcamps =(req, res, next) => {
+    console.log(req.body);
     res.status(200).json({ success: true, msg: `Show bootcamp ${req.params.id}` });
 }
+
+
 
 
 //@desc  single  create bootcamp
