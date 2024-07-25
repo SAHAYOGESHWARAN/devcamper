@@ -45,4 +45,10 @@ const deleteData = async () => {
             }
             process.exit();
             }
-            
+
+            if(process.argv[2] === '-i'){
+                importData();
+
+            }else if (process.argv[2] === '-d') {
+                deleteData();
+            }
