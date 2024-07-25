@@ -1,4 +1,4 @@
-const ErrorResponse = require('../utils/errorResponse.js');
+const ErrorResponse = require('../utils/errorResponse');
 const Bootcamp = require('../models/Bootcamp');
 
 // @desc    Get all bootcamps
