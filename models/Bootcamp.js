@@ -104,6 +104,7 @@ const BootcampSchema = new mongoose.Schema({
 
 BootcampSchema.pre('save',function(next){
     console.log('slugify ran',this.name);
+    next();
 
 });
 
