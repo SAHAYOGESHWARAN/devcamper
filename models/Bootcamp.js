@@ -53,7 +53,7 @@ const BootcampSchema = new mongoose.Schema({
     },
     careers: {
         // Array of strings
-        type: [String],  // `String` should be capitalized
+        type: [String],
         required: true,
         enum: [
             'Full Time',
@@ -71,7 +71,7 @@ const BootcampSchema = new mongoose.Schema({
     averageRating: {
         type: Number,
         min: [1, 'Rating must be at least 1'],
-        max: [10, 'Rating can not be more than 10'] // Changed max[10] to max: [10]
+        max: [10, 'Rating can not be more than 10']
     },
     averageCost: Number,
     photo: {
