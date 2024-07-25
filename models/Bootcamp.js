@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify')
 
 const BootcampSchema = new mongoose.Schema({
     name: {
@@ -99,5 +100,12 @@ const BootcampSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+// create bootcamp 
+
+BootcampSchema.pre('save',function(next){
+    console.log('slugify ran',this.name);
+
+});
+
 
 module.exports = mongoose.model('Bootcamp', BootcampSchema);
